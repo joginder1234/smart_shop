@@ -5,6 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart_shop/classes/basic_models.dart';
 import 'package:smart_shop/helpers/base_getters.dart';
 import 'package:smart_shop/helpers/icons_and_image.dart';
+import 'package:smart_shop/screens/account/address/address_view.dart';
+import 'package:smart_shop/screens/account/profile.dart';
+import 'package:smart_shop/screens/auth/reset_password/update_password.dart';
 
 import '../../helpers/style_sheet.dart';
 
@@ -45,7 +48,7 @@ class _AccountMainviewState extends State<AccountMainview> {
                   children: [
                     CircleAvatar(
                       radius: 35.r,
-                      backgroundImage: AssetImage(AppImages.profileImage),
+                      backgroundImage: const AssetImage(AppImages.profileImage),
                     ),
                     AppServices.addWidth(15.w),
                     Expanded(
@@ -78,6 +81,7 @@ class _AccountMainviewState extends State<AccountMainview> {
                     final btn = _btns[i];
                     return Card(
                         child: ListTile(
+                      onTap: () => getNavigation(btn.title),
                       leading: Image.asset(btn.icon,
                           color: AppColors.btnActiveColor, height: 18.h),
                       title: Text(btn.title, style: GetTextTheme.sf16_Regular),
@@ -90,5 +94,30 @@ class _AccountMainviewState extends State<AccountMainview> {
         ],
       ),
     );
+  }
+
+  getNavigation(String btn) {
+    switch (btn) {
+      case "Update Profile":
+        return AppServices.pushTo(context, UserProfileView());
+      case "Change Password":
+        return AppServices.pushTo(context, UpdatePasswordView(route: "change"));
+      case "My Orders":
+        return null;
+      case "Addresses":
+        return AppServices.pushTo(context, MyAddressView());
+      case "Language":
+        return null;
+      case "FAQs":
+        return null;
+      case "Privacy and Terms":
+        return null;
+      case "About":
+        return null;
+      case "Logout":
+        return null;
+      default:
+        return null;
+    }
   }
 }

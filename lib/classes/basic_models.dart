@@ -18,3 +18,9 @@ class CatalogClass {
   List<CategoryClass> items;
   CatalogClass(this.title, this.items);
 }
+
+class AddressModel {
+  String id, location, houseNo, landmark, pincode, title;
+  AddressModel(this.id, this.location, this.houseNo, this.landmark,
+      this.pincode, this.title);
+}

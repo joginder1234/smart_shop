@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:smart_shop/app_config.dart';
+import 'package:smart_shop/providers/appdata_provider.dart';
 import 'package:smart_shop/splash.dart';
 
 void main() {
@@ -14,9 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      builder: (context, child) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: SplashView(),
+      builder: (context, child) => MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => AppDataProvider())
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: SplashView(),
+        ),
       ),
       splitScreenMode: false,
       designSize: const Size(AppConfigs.designWidth, AppConfigs.designHeight),

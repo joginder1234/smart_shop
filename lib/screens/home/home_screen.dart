@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart_shop/app_config.dart';
+import 'package:smart_shop/bottom_nav_screen.dart';
 import 'package:smart_shop/components/basic_assets.dart';
 import 'package:smart_shop/components/product_tile_one.dart';
 import 'package:smart_shop/components/textfield_primary.dart';
@@ -250,7 +251,8 @@ class ScreenHeaderTwo extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () => AppServices.pushAndRemove(
+                          context, BottomNavScreenView(routeIndex: 3)),
                       iconSize: 18.sp,
                       icon: Image.asset(
                         AppIcons.notificationIcon,
@@ -258,7 +260,8 @@ class ScreenHeaderTwo extends StatelessWidget {
                         height: 20.h,
                       )),
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () => AppServices.pushAndRemove(
+                          context, BottomNavScreenView(routeIndex: 2)),
                       iconSize: 18.sp,
                       icon: Image.asset(
                         AppIcons.cartIcon,

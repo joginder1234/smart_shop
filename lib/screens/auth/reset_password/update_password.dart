@@ -11,7 +11,8 @@ import '../../../helpers/base_getters.dart';
 import '../../../helpers/style_sheet.dart';
 
 class UpdatePasswordView extends StatefulWidget {
-  const UpdatePasswordView({super.key});
+  String route;
+  UpdatePasswordView({super.key, this.route = ""});
 
   @override
   State<UpdatePasswordView> createState() => _UpdatePasswordViewState();
@@ -66,12 +67,24 @@ class _UpdatePasswordViewState extends State<UpdatePasswordView> {
               ),
               AppServices.addHeight(60.h),
               Row(
-                children: [ExpandedButtonWidget(text: "Submit", ontap: () {})],
+                children: [
+                  ExpandedButtonWidget(
+                      text: "Submit", ontap: () => getNavigation())
+                ],
               )
             ],
           ),
         ),
       )),
     );
+  }
+
+  getNavigation() {
+    switch (widget.route) {
+      case "change":
+        return AppServices.popView(context);
+      default:
+        return null;
+    }
   }
 }
