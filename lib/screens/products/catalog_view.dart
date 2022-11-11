@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart_shop/components/basic_assets.dart';
 import 'package:smart_shop/components/product_tile_one.dart';
 import 'package:smart_shop/helpers/style_sheet.dart';
+import 'package:smart_shop/screens/products/products_view.dart';
 
 import '../../helpers/base_getters.dart';
 import '../home/home_screen.dart';
@@ -56,14 +57,23 @@ class _ProductCatalogViewState extends State<ProductCatalogView> {
                                   physics: NeverScrollableScrollPhysics(),
                                   gridDelegate:
                                       SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 3),
+                                          crossAxisCount:
+                                              AppServices.isSmallScreen(context)
+                                                  ? 2
+                                                  : 3),
                                   itemBuilder: (ctx, j) {
                                     final item = subCat.items[i];
-                                    return ProductTile(
-                                        centertitle: true,
-                                        imageUrl: item.image,
-                                        productName: item.title,
-                                        basicPrice: "");
+                                    return GestureDetector(
+                                      onTap: () {
+                                        AppServices.pushTo(
+                                            context, const ProductsView());
+                                      },
+                                      child: ProductTile(
+                                          centertitle: true,
+                                          imageUrl: item.image,
+                                          productName: item.title,
+                                          basicPrice: ""),
+                                    );
                                   })
                             ],
                           );
