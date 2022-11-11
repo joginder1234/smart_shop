@@ -36,12 +36,14 @@ class ProductTile extends StatelessWidget {
                   ? MainAxisAlignment.center
                   : MainAxisAlignment.start,
               children: [
-                Text(productName,
-                    overflow: TextOverflow.ellipsis,
-                    textScaleFactor: AppServices.scaleFactor(context),
-                    style: AppServices.isSmallScreen(context)
-                        ? GetTextTheme.sf14_Bold
-                        : GetTextTheme.sf12_Bold),
+                Expanded(
+                  child: Text(productName,
+                      overflow: TextOverflow.ellipsis,
+                      textScaleFactor: AppServices.scaleFactor(context),
+                      style: AppServices.isSmallScreen(context)
+                          ? GetTextTheme.sf14_Bold
+                          : GetTextTheme.sf12_Bold),
+                ),
               ],
             ),
             basicPrice == ""
