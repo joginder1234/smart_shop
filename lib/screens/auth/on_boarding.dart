@@ -101,7 +101,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                         ontap: () =>
                             AppServices.pushTo(context, SignUpFormView()))
                   ],
-                )
+                ),
+                AppServices.addHeight(20.h)
               ],
             ),
           ),

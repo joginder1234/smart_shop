@@ -201,14 +201,15 @@ class BannerSliderView extends StatelessWidget {
         child: Row(
           children: List.generate(
               banners.length,
-              (i) => Container(
-                    margin: EdgeInsets.only(right: 10.w),
-                    width: 280.w,
-                    height: 150.h,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(banners[i]), fit: BoxFit.cover),
-                        borderRadius: BorderRadius.circular(12.r)),
+              (i) => AspectRatio(
+                    aspectRatio: 16 / 9,
+                    child: Container(
+                      margin: EdgeInsets.only(right: 10.w),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(banners[i]), fit: BoxFit.cover),
+                          borderRadius: BorderRadius.circular(12.r)),
+                    ),
                   )),
         ),
       ),
