@@ -37,6 +37,8 @@ class AppImages {
 
   static const profileImage = "assets/images/profile.jpeg";
   static const emptyImage = "assets/images/empty.png";
+  static const orderSuccess = "assets/success.png";
+  static const emptyOrder = "assets/empty_order.png";
 
   /* product Images */
   static const watchImage = "assets/images/watch.png";

@@ -8,6 +8,7 @@ import 'package:smart_shop/helpers/icons_and_image.dart';
 import 'package:smart_shop/screens/account/address/address_view.dart';
 import 'package:smart_shop/screens/account/profile.dart';
 import 'package:smart_shop/screens/auth/reset_password/update_password.dart';
+import 'package:smart_shop/screens/orders/order_main_view.dart';
 
 import '../../helpers/style_sheet.dart';
 
@@ -24,7 +25,7 @@ class _AccountMainviewState extends State<AccountMainview> {
     AccountBtnClass(AppIcons.lockIcon, "Change Password"),
     AccountBtnClass(AppIcons.shoppingIcon, "My Orders"),
     AccountBtnClass(AppIcons.addressIcon, "Addresses"),
-    AccountBtnClass(AppIcons.languageIcon, "Language"),
+    // AccountBtnClass(AppIcons.languageIcon, "Language"),
     AccountBtnClass(AppIcons.faqIcon, "FAQs"),
     AccountBtnClass(AppIcons.privacyIcon, "Privacy and Terms"),
     AccountBtnClass(AppIcons.aboutIcon, "About"),
@@ -103,7 +104,7 @@ class _AccountMainviewState extends State<AccountMainview> {
       case "Change Password":
         return AppServices.pushTo(context, UpdatePasswordView(route: "change"));
       case "My Orders":
-        return null;
+        return AppServices.pushTo(context, OrderMainView());
       case "Addresses":
         return AppServices.pushTo(context, MyAddressView());
       case "Language":

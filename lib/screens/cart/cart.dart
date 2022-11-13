@@ -7,6 +7,7 @@ import 'package:smart_shop/components/expanded_button.dart';
 import 'package:smart_shop/helpers/base_getters.dart';
 import 'package:smart_shop/helpers/icons_and_image.dart';
 import 'package:smart_shop/helpers/style_sheet.dart';
+import 'package:smart_shop/screens/cart/checkout_view.dart';
 
 class CartMainView extends StatefulWidget {
   const CartMainView({super.key});
@@ -18,7 +19,7 @@ class CartMainView extends StatefulWidget {
 class _CartMainViewState extends State<CartMainView> {
   int qnty = 1;
   bool showDetails = false;
-  int length = 0;
+  int length = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -167,83 +168,33 @@ class _CartMainViewState extends State<CartMainView> {
           : Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.w),
               child: Card(
-                child: AnimatedContainer(
-                  duration: Duration(milliseconds: 350),
+                child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.r),
                       color: AppColors.bgWhite),
                   width: AppServices.getScreenWidth(context),
                   padding:
                       EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                  child: Row(
                     children: [
-                      InkWell(
-                        onTap: () => setState(() => showDetails = !showDetails),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                      Expanded(
+                          child: SizedBox(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text("Details", style: GetTextTheme.sf12_Regular),
-                            Icon(showDetails
-                                ? Icons.keyboard_arrow_down_outlined
-                                : Icons.keyboard_arrow_up_outlined)
+                            Text("Total Price",
+                                style: GetTextTheme.sf10_regular),
+                            AppServices.addHeight(5.h),
+                            Text("${AppServices.getCurrencySymbol} 418.00",
+                                style: GetTextTheme.sf18_Bold),
                           ],
                         ),
-                      ),
-                      showDetails
-                          ? Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                AppServices.addHeight(5.h),
-                                Divider(),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Subtotal:",
-                                        style: GetTextTheme.sf12_Regular),
-                                    Text(
-                                        "${AppServices.getCurrencySymbol} 627.00",
-                                        textAlign: TextAlign.right,
-                                        style: GetTextTheme.sf12_Bold),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Discount:",
-                                        style: GetTextTheme.sf12_Regular),
-                                    Text(
-                                        "${AppServices.getCurrencySymbol} 00.00",
-                                        textAlign: TextAlign.right,
-                                        style: GetTextTheme.sf12_Bold),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Delivery Charge:",
-                                        style: GetTextTheme.sf12_Regular),
-                                    Text(
-                                        "${AppServices.getCurrencySymbol} 50.00",
-                                        textAlign: TextAlign.right,
-                                        style: GetTextTheme.sf12_Bold),
-                                  ],
-                                ),
-                              ],
-                            )
-                          : SizedBox(),
-                      AppServices.addHeight(10.h),
-                      Row(
-                        children: [
-                          ExpandedButtonWidget(
-                              text:
-                                  "Proceed to pay ${AppServices.getCurrencySymbol} 627.00",
-                              ontap: () {})
-                        ],
-                      ),
+                      )),
+                      ExpandedButtonWidget(
+                          text: "Checkout ➤",
+                          ontap: () =>
+                              AppServices.pushTo(context, CheckoutView())),
                     ],
                   ),
                 ),
