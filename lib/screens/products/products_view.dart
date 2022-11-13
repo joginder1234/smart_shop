@@ -76,6 +76,7 @@ class _ProductsViewState extends State<ProductsView> {
                                   Text("Creamy Strawberry",
                                       style: GetTextTheme.sf14_Bold,
                                       overflow: TextOverflow.ellipsis),
+                                  AppServices.addHeight(10.w),
                                   Row(
                                     children: [
                                       Text(
@@ -91,6 +92,7 @@ class _ProductsViewState extends State<ProductsView> {
                                           style: GetTextTheme.sf14_Bold),
                                     ],
                                   ),
+                                  AppServices.addHeight(5.w),
                                   Row(
                                     children: [
                                       const Icon(
@@ -113,6 +115,7 @@ class _ProductsViewState extends State<ProductsView> {
                               )),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisSize: MainAxisSize.min,
                                 children: [
                                   TextButton(
                                       style: ButtonStyle(
