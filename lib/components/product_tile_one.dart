@@ -27,10 +27,10 @@ class ProductTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-                child: Image.asset(imageUrl,
-                    scale: AppServices.scaleFactor(context),
-                    height: AppServices.isSmallScreen(context) ? 110.h : 70.h)),
+            Expanded(
+              child: Center(child: Image.asset(imageUrl)),
+            ),
+            AppServices.addHeight(8.h),
             Row(
               mainAxisAlignment: centertitle
                   ? MainAxisAlignment.center
@@ -39,10 +39,7 @@ class ProductTile extends StatelessWidget {
                 Expanded(
                   child: Text(productName,
                       overflow: TextOverflow.ellipsis,
-                      textScaleFactor: AppServices.scaleFactor(context),
-                      style: AppServices.isSmallScreen(context)
-                          ? GetTextTheme.sf14_Bold
-                          : GetTextTheme.sf12_Bold),
+                      style: GetTextTheme.sf12_Bold),
                 ),
               ],
             ),
@@ -53,7 +50,6 @@ class ProductTile extends StatelessWidget {
                     children: [
                       Text(oldPrice,
                           overflow: TextOverflow.ellipsis,
-                          textScaleFactor: AppServices.scaleFactor(context),
                           style: (AppServices.isSmallScreen(context)
                                   ? GetTextTheme.sf12_Regular
                                   : GetTextTheme.sf10_regular)
@@ -62,7 +58,6 @@ class ProductTile extends StatelessWidget {
                                   color: AppColors.textLightColor)),
                       Text(basicPrice,
                           overflow: TextOverflow.ellipsis,
-                          textScaleFactor: AppServices.scaleFactor(context),
                           style: AppServices.isSmallScreen(context)
                               ? GetTextTheme.sf12_Bold
                               : GetTextTheme.sf12_Bold),

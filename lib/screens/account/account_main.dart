@@ -82,6 +82,8 @@ class _AccountMainviewState extends State<AccountMainview> {
                     final btn = _btns[i];
                     return Card(
                         child: ListTile(
+                      contentPadding: EdgeInsets.symmetric(
+                          vertical: 10.h, horizontal: 20.w),
                       onTap: () => getNavigation(btn.title),
                       leading: Image.asset(btn.icon,
                           color: AppColors.btnActiveColor, height: 18.h),
