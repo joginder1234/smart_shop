@@ -65,14 +65,18 @@ class _AddNewAddressViewState extends State<AddNewAddressView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Card(
-                child: Row(
-                  children: [
-                    Checkbox(
-                        value: useCurrent,
-                        onChanged: (value) => setAddress(value!)),
-                    AppServices.addWidth(20.w),
-                    Text("User Current Location", style: GetTextTheme.sf14_Bold)
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Checkbox(
+                          value: useCurrent,
+                          onChanged: (value) => setAddress(value!)),
+                      AppServices.addWidth(20.w),
+                      Text("User Current Location",
+                          style: GetTextTheme.sf14_Bold)
+                    ],
+                  ),
                 ),
               ),
               AppServices.addHeight(35.h),

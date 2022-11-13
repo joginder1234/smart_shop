@@ -43,21 +43,27 @@ class _CompletedOrderviewState extends State<CompletedOrderview> {
                         Text("Qty: 2   |   Payment: ONLINE",
                             style: GetTextTheme.sf12_Regular),
                         AppServices.addHeight(12.h),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 10.w, vertical: 5.h),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.r),
-                              color: AppColors.textFieldColor),
-                          child:
-                              Text("Completed", style: GetTextTheme.sf12_Bold),
-                        ),
-                        AppServices.addHeight(10.h),
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("${AppServices.getCurrencySymbol} 326.00",
-                                style: GetTextTheme.sf16_Bold),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10.w, vertical: 5.h),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8.r),
+                                      color: AppColors.textFieldColor),
+                                  child: Text("Completed",
+                                      style: GetTextTheme.sf12_Bold),
+                                ),
+                                AppServices.addHeight(10.h),
+                                Text("${AppServices.getCurrencySymbol} 326.00",
+                                    style: GetTextTheme.sf16_Bold),
+                              ],
+                            ),
                             TextButton(
                                 style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all(
@@ -73,7 +79,7 @@ class _CompletedOrderviewState extends State<CompletedOrderview> {
                                       .copyWith(color: AppColors.bgWhite),
                                 ))
                           ],
-                        )
+                        ),
                       ],
                     ),
                   ))

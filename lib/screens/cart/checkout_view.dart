@@ -67,16 +67,26 @@ class _CheckoutViewState extends State<CheckoutView> {
                     shrinkWrap: true,
                     itemCount: 2,
                     itemBuilder: (ctx, i) {
-                      return ListTile(
-                        leading:
-                            Image.asset(AppImages.safolaImage, height: 35.h),
-                        title:
-                            Text("Safola Oats", style: GetTextTheme.sf16_Bold),
-                        subtitle:
-                            Text("200 gm", style: GetTextTheme.sf10_regular),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
+                      return Container(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 15.w, vertical: 10.w),
+                        child: Row(
                           children: [
+                            Image.asset(AppImages.safolaImage, height: 35.w),
+                            AppServices.addWidth(10.w),
+                            Expanded(
+                              child: SizedBox(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Safola Oats",
+                                        style: GetTextTheme.sf16_Bold),
+                                    Text("200 gm",
+                                        style: GetTextTheme.sf10_regular)
+                                  ],
+                                ),
+                              ),
+                            ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               mainAxisSize: MainAxisSize.min,
@@ -99,6 +109,20 @@ class _CheckoutViewState extends State<CheckoutView> {
                           ],
                         ),
                       );
+                      // ListTile(
+                      //   leading:
+                      //       Image.asset(AppImages.safolaImage, height: 35.h),
+                      //   title:
+                      //       Text("Safola Oats", style: GetTextTheme.sf16_Bold),
+                      //   subtitle:
+                      //       Text("200 gm", style: GetTextTheme.sf10_regular),
+                      //   trailing: Row(
+                      //     mainAxisSize: MainAxisSize.min,
+                      //     children: [
+
+                      //     ],
+                      //   ),
+                      // );
                     }),
               ),
               AppServices.addHeight(15.h),

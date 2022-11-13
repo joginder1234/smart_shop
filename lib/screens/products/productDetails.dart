@@ -216,7 +216,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                           ),
                           SizedBox(
                             width: AppServices.getScreenWidth(context),
-                            height: 200,
+                            height: 120.w,
                             child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 shrinkWrap: true,
