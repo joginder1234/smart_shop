@@ -31,7 +31,7 @@ class _CompletedOrderviewState extends State<CompletedOrderview> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(AppImages.watchImage, height: 75.h),
+                  Image.asset(AppImages.watchImage, height: 75.w),
                   AppServices.addWidth(15.w),
                   Expanded(
                       child: SizedBox(
@@ -42,7 +42,7 @@ class _CompletedOrderviewState extends State<CompletedOrderview> {
                             style: GetTextTheme.sf16_Bold),
                         Text("Qty: 2   |   Payment: ONLINE",
                             style: GetTextTheme.sf12_Regular),
-                        AppServices.addHeight(8.h),
+                        AppServices.addHeight(12.h),
                         Container(
                           padding: EdgeInsets.symmetric(
                               horizontal: 10.w, vertical: 5.h),
@@ -52,6 +52,7 @@ class _CompletedOrderviewState extends State<CompletedOrderview> {
                           child:
                               Text("Completed", style: GetTextTheme.sf12_Bold),
                         ),
+                        AppServices.addHeight(10.h),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [

@@ -37,7 +37,7 @@ class _UserProfileViewState extends State<UserProfileView> {
               child: Stack(
                 children: [
                   CircleAvatar(
-                    radius: 45,
+                    radius: 55.sp,
                     backgroundImage: AssetImage(AppImages.profileImage),
                   ),
                   Positioned(
