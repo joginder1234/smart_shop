@@ -71,7 +71,8 @@ class _ProfileAndPasswordViewState extends State<ProfileAndPasswordView> {
                 children: [
                   ExpandedButtonWidget(text: "Continue", ontap: () {})
                 ],
-              )
+              ),
+              AppServices.addHeight(40.h),
             ],
           ),
         ),
