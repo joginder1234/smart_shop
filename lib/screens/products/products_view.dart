@@ -54,7 +54,7 @@ class _ProductsViewState extends State<ProductsView> {
                                       child: Image.asset(AppImages.watchImage,
                                           scale:
                                               AppServices.scaleFactor(context),
-                                          height: 60.h),
+                                          height: 60.w),
                                     ),
                                     Container(
                                       padding: EdgeInsets.symmetric(
@@ -80,7 +80,7 @@ class _ProductsViewState extends State<ProductsView> {
                                     children: [
                                       Text(
                                         "${AppServices.getCurrencySymbol} 350.0",
-                                        style: GetTextTheme.sf14_Regular
+                                        style: GetTextTheme.sf12_Regular
                                             .copyWith(
                                                 decoration:
                                                     TextDecoration.lineThrough),
@@ -109,32 +109,42 @@ class _ProductsViewState extends State<ProductsView> {
                                       )
                                     ],
                                   ),
-                                  DropdownButton<String>(
-                                      value: dropDownValue,
-                                      items: quantity
-                                          .map((e) => DropdownMenuItem<String>(
-                                              value: e,
-                                              child: Text(
-                                                e,
-                                                style: GetTextTheme.sf14_Bold,
-                                              )))
-                                          .toList(),
-                                      onChanged: (value) => setState(() {
-                                            dropDownValue = value!;
-                                          }))
                                 ],
                               )),
-                              TextButton(
-                                  style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              AppColors.greenPrimary)),
-                                  onPressed: () {},
-                                  child: Text(
-                                    "Add",
-                                    style: GetTextTheme.sf14_Bold
-                                        .copyWith(color: AppColors.bgWhite),
-                                  ))
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  TextButton(
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  AppColors.greenPrimary)),
+                                      onPressed: () {},
+                                      child: Text(
+                                        "Add",
+                                        style: GetTextTheme.sf14_Bold
+                                            .copyWith(color: AppColors.bgWhite),
+                                      )),
+                                  AppServices.addHeight(10.w),
+                                  DropdownButtonHideUnderline(
+                                    child: DropdownButton<String>(
+                                        value: dropDownValue,
+                                        items: quantity
+                                            .map(
+                                                (e) => DropdownMenuItem<String>(
+                                                    value: e,
+                                                    child: Text(
+                                                      e,
+                                                      style: GetTextTheme
+                                                          .sf12_Bold,
+                                                    )))
+                                            .toList(),
+                                        onChanged: (value) => setState(() {
+                                              dropDownValue = value!;
+                                            })),
+                                  )
+                                ],
+                              )
                             ],
                           ),
                         ),

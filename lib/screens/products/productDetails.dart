@@ -52,7 +52,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                         child: Image.asset(
                           AppImages.safolaImage,
                           scale: AppServices.scaleFactor(context),
-                          height: 200.h,
+                          height: 200.w,
                         ),
                       ),
                       Container(
@@ -64,7 +64,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                             color: AppColors.btnActiveColor),
                         child: Text(
                           "5.0 %",
-                          style: GetTextTheme.sf16_Regular
+                          style: GetTextTheme.sf12_Regular
                               .copyWith(color: AppColors.bgWhite),
                         ),
                       )
@@ -81,33 +81,25 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                             style: GetTextTheme.sf18_Bold,
                           ),
                           Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Expanded(
-                                flex: 1,
-                                child: SizedBox(
-                                  height: 10.h,
-                                  child: ListView.builder(
-                                      itemCount: 5,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.horizontal,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      itemBuilder: (context, index) =>
-                                          const Icon(
-                                            Icons.star,
-                                            size: 15,
-                                            color: AppColors.btnActiveColor,
-                                          )),
-                                ),
+                              RatingBarIndicator(
+                                rating: Random().nextInt(5).toDouble(),
+                                itemBuilder: (context, index) => Icon(
+                                    Icons.star,
+                                    color: AppColors.btnActiveColor),
+                                itemCount: 5,
+                                itemSize: 10.sp,
+                                direction: Axis.horizontal,
                               ),
+                              AppServices.addWidth(15.w),
                               Expanded(
                                 flex: 3,
                                 child: Text(
                                   "5 Stars",
-                                  style: GetTextTheme.sf14_Bold,
+                                  style: GetTextTheme.sf12_Bold,
                                 ),
                               )
                             ],
@@ -115,77 +107,115 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                           AppServices.addHeight(20.h),
                           Row(
                             children: [
-                              Text(
-                                "Price : ",
-                                style: GetTextTheme.sf16_Regular,
-                              ),
-                              AppServices.addWidth(20.w),
-                              Text(
-                                "${AppServices.getCurrencySymbol} 350.0",
-                                style: GetTextTheme.sf16_Regular.copyWith(
-                                    decoration: TextDecoration.lineThrough),
-                              ),
-                              AppServices.addWidth(20.w),
-                              Text.rich(TextSpan(
-                                  text:
-                                      "${AppServices.getCurrencySymbol} 875.00",
-                                  style: GetTextTheme.sf16_Bold,
-                                  children: [
-                                    TextSpan(
-                                        text: " /Litre",
-                                        style: GetTextTheme.sf10_regular)
-                                  ]))
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("Quantity : ",
-                                  style: GetTextTheme.sf16_Regular),
-                              AppServices.addWidth(20.w),
-                              SizedBox(
-                                child: Row(
-                                  children: [
-                                    IconButton(
-                                        splashRadius: 20,
-                                        onPressed: () => qnty > 1
-                                            ? setState(() => qnty--)
-                                            : null,
-                                        icon: const Icon(Icons.remove_circle,
-                                            color: AppColors.btnActiveColor)),
-                                    SizedBox(
-                                        width: 20.w,
-                                        child: Center(
-                                            child: Text(
-                                                qnty.clamp(1, 20).toString(),
-                                                style:
-                                                    GetTextTheme.sf12_Bold))),
-                                    IconButton(
-                                        splashRadius: 20,
-                                        onPressed: () => qnty < 20
-                                            ? setState(() => qnty++)
-                                            : null,
-                                        icon: const Icon(Icons.add_circle,
-                                            color: AppColors.btnActiveColor)),
-                                  ],
+                              Expanded(
+                                flex: 2,
+                                child: SizedBox(
+                                  child: Text(
+                                    "Price : ",
+                                    style: GetTextTheme.sf16_Regular,
+                                  ),
                                 ),
                               ),
                               AppServices.addWidth(20.w),
-                              Text(
-                                "(50 available)",
-                                style: GetTextTheme.sf14_Regular,
-                              )
+                              Expanded(
+                                  flex: 4,
+                                  child: SizedBox(
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          "${AppServices.getCurrencySymbol} 350.0",
+                                          style: GetTextTheme.sf16_Regular
+                                              .copyWith(
+                                                  decoration: TextDecoration
+                                                      .lineThrough),
+                                        ),
+                                        AppServices.addWidth(20.w),
+                                        Text.rich(TextSpan(
+                                            text:
+                                                "${AppServices.getCurrencySymbol} 875.00",
+                                            style: GetTextTheme.sf16_Bold,
+                                            children: [
+                                              TextSpan(
+                                                  text: " /Litre",
+                                                  style:
+                                                      GetTextTheme.sf10_regular)
+                                            ]))
+                                      ],
+                                    ),
+                                  ))
                             ],
                           ),
                           Row(
                             children: [
-                              Text(
-                                "Total Price : ",
-                                style: GetTextTheme.sf16_Regular,
+                              Expanded(
+                                flex: 2,
+                                child: SizedBox(
+                                  child: Text("Quantity : ",
+                                      style: GetTextTheme.sf16_Regular),
+                                ),
                               ),
                               AppServices.addWidth(20.w),
-                              Text(
-                                "${AppServices.getCurrencySymbol} 875.00",
-                                style: GetTextTheme.sf16_Bold,
+                              Expanded(
+                                flex: 4,
+                                child: SizedBox(
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      IconButton(
+                                          splashRadius: 20,
+                                          onPressed: () => qnty > 1
+                                              ? setState(() => qnty--)
+                                              : null,
+                                          icon: Icon(Icons.remove_circle,
+                                              size: 15.sp,
+                                              color: AppColors.btnActiveColor)),
+                                      SizedBox(
+                                          width: 20.w,
+                                          child: Center(
+                                              child: Text(
+                                                  qnty.clamp(1, 20).toString(),
+                                                  style:
+                                                      GetTextTheme.sf12_Bold))),
+                                      IconButton(
+                                          splashRadius: 20,
+                                          onPressed: () => qnty < 20
+                                              ? setState(() => qnty++)
+                                              : null,
+                                          icon: Icon(Icons.add_circle,
+                                              size: 15.sp,
+                                              color: AppColors.btnActiveColor)),
+                                      AppServices.addWidth(20.w),
+                                      Text(
+                                        "(50 available)",
+                                        style: GetTextTheme.sf12_Regular,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 2,
+                                child: SizedBox(
+                                  child: Text(
+                                    "Total Price : ",
+                                    style: GetTextTheme.sf16_Regular,
+                                  ),
+                                ),
+                              ),
+                              AppServices.addWidth(20.w),
+                              Expanded(
+                                flex: 4,
+                                child: SizedBox(
+                                  child: Text(
+                                    "${AppServices.getCurrencySymbol} 875.00",
+                                    style: GetTextTheme.sf16_Bold,
+                                  ),
+                                ),
                               )
                             ],
                           ),
@@ -216,7 +246,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                           ),
                           SizedBox(
                             width: AppServices.getScreenWidth(context),
-                            height: 200,
+                            height: 120.w,
                             child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 shrinkWrap: true,
@@ -289,7 +319,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                               itemCount: 5,
                                               itemPadding: EdgeInsets.symmetric(
                                                   horizontal: 5.w),
-                                              itemSize: 20.0,
+                                              itemSize: 15.sp,
                                               direction: Axis.horizontal,
                                             )),
                                   ),

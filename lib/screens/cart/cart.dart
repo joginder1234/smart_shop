@@ -76,7 +76,7 @@ class _CartMainViewState extends State<CartMainView> {
                             Row(
                               children: [
                                 Image.asset(AppImages.safolaImage,
-                                    height: 55.h),
+                                    height: 55.w),
                                 AppServices.addWidth(15.w),
                                 Expanded(
                                     child: SizedBox(
@@ -124,8 +124,8 @@ class _CartMainViewState extends State<CartMainView> {
                                               onPressed: () => qnty > 1
                                                   ? setState(() => qnty--)
                                                   : null,
-                                              icon: const Icon(
-                                                  Icons.remove_circle,
+                                              icon: Icon(Icons.remove_circle,
+                                                  size: 18.sp,
                                                   color: AppColors
                                                       .btnActiveColor)),
                                           SizedBox(
@@ -141,7 +141,8 @@ class _CartMainViewState extends State<CartMainView> {
                                               onPressed: () => qnty < 20
                                                   ? setState(() => qnty++)
                                                   : null,
-                                              icon: const Icon(Icons.add_circle,
+                                              icon: Icon(Icons.add_circle,
+                                                  size: 18.sp,
                                                   color: AppColors
                                                       .btnActiveColor)),
                                         ],
